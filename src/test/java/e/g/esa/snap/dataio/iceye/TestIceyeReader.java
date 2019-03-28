@@ -29,6 +29,7 @@ import java.io.File;
  */
 public class TestIceyeReader {
 
+    public static final String TESTING_IMAGE_PATH = "/home/ahmad/Documents/Projects/snap/test";
     private IceyeProductReaderPlugIn readerPlugin;
     private ProductReader reader;
 
@@ -48,7 +49,7 @@ public class TestIceyeReader {
     public void testOpenAll() {
         TestProcessor testProcessor = new TestProcessor(100, 100, 100, 100, 1, true, false);
 
-        File file = new File("/home/ahmad/Documents/Projects/snap/test");
+        File file = new File(TESTING_IMAGE_PATH);
         File[] folderPaths = new File[1];
         folderPaths[0] = file;
         try {
