@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+AutoUpdate-Show-In-Client: true
+AutoUpdate-Essential-Module: true
+OpenIDE-Module-Layer: e/g/org/esa/snap/dataio/iceye/layer.xml
+OpenIDE-Module-Java-Dependencies: Java > 1.8
+OpenIDE-Module-Display-Category: SNAP
