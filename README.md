@@ -21,10 +21,24 @@ purposes [debug], execute:
 
 To run unit tests, execute:
 
-- change TESTING_IMAGE_PATH variable at e.g.esa.snap.dataio.iceye.TestIceyeReader
+    - change TESTING_IMAGE_PATH variable at e.g.esa.snap.dataio.iceye.TestIceyeReader
 
     mvn clean install
 
 To build without testing
 
     mvn clean install -DskipTests=true;
+    
+* Integration Testing
+
+    - Download SNAP desktop version 6.0.0 "http://step.esa.int/main/download/"
+    - You can update the application if you want
+    - Add plugin:
+        - Tools -> Plugins -> Downloaded -> add plugin -> slect pulgin from your target file [.pem]
+    - Open image:
+        - File -> Import -> SAR sensors -> Iceye-Product
+        
+        
+* Useful urls
+    - Snap git hub:https://github.com/senbox-org/s1tbx
+
