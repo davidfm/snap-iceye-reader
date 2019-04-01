@@ -203,7 +203,6 @@ public class IceyeProductReader extends SARReader {
      * method can be sure that the input object and eventually the subset information has already been set.
      * <p/>
      * <p>This method is called as a last step in the <code>readProductNodes(input, subsetInfo)</code> method.
-     *
      */
     @Override
     protected Product readProductNodesImpl() {
@@ -305,7 +304,7 @@ public class IceyeProductReader extends SARReader {
             AbstractMetadata.setAttribute(absRoot, AbstractMetadata.PROC_TIME, ProductData.UTC.parse(netcdfFile.getRootGroup().findVariable(IceyeXConstants.ACQUISITION_START_UTC).readScalarString(), standardDateFormat));
 
 
-            AbstractMetadata.setAttribute(absRoot, AbstractMetadata.ProcessingSystemIdentifier, netcdfFile.getRootGroup().findVariable(IceyeXConstants.PROCESSING_SYSTEM_IDENTIFIER).readScalarFloat());
+            AbstractMetadata.setAttribute(absRoot, AbstractMetadata.ProcessingSystemIdentifier, IceyeXConstants.ICEYE_PROCESSOR_NAME + netcdfFile.getRootGroup().findVariable(IceyeXConstants.PROCESSING_SYSTEM_IDENTIFIER).readScalarFloat());
             AbstractMetadata.setAttribute(absRoot, AbstractMetadata.CYCLE, netcdfFile.getRootGroup().findVariable(IceyeXConstants.CYCLE).readScalarInt());
             AbstractMetadata.setAttribute(absRoot, AbstractMetadata.REL_ORBIT, netcdfFile.getRootGroup().findVariable(IceyeXConstants.REL_ORBIT).readScalarInt());
             AbstractMetadata.setAttribute(absRoot, AbstractMetadata.ABS_ORBIT, netcdfFile.getRootGroup().findVariable(IceyeXConstants.ABS_ORBIT).readScalarInt());
@@ -345,7 +344,7 @@ public class IceyeProductReader extends SARReader {
             AbstractMetadata.setAttribute(absRoot, AbstractMetadata.line_time_interval, netcdfFile.getRootGroup().findVariable(IceyeXConstants.LINE_TIME_INTERVAL).readScalarDouble());
             final int rasterWidth = netcdfFile.getRootGroup().findVariable(IceyeXConstants.NUM_SAMPLES_PER_LINE).readScalarInt();
             final int rasterHeight = netcdfFile.getRootGroup().findVariable(IceyeXConstants.NUM_OUTPUT_LINES).readScalarInt();
-            double totalSize = (rasterHeight * rasterWidth * 2 * 4) / (1024.0f * 1024.0f);
+            double totalSize = (rasterHeight * rasterWidth * 2 * 2) / (1024.0f * 1024.0f);
             AbstractMetadata.setAttribute(absRoot, AbstractMetadata.TOT_SIZE, totalSize);
             AbstractMetadata.setAttribute(absRoot, AbstractMetadata.num_output_lines, netcdfFile.getRootGroup().findVariable(IceyeXConstants.NUM_OUTPUT_LINES).readScalarInt());
 
@@ -570,9 +569,9 @@ public class IceyeProductReader extends SARReader {
      */
     @Override
     protected void readBandRasterDataImpl(int sourceOffsetX, int sourceOffsetY, int sourceWidth, int sourceHeight,
-                                                       int sourceStepX, int sourceStepY, Band destBand, int destOffsetX,
-                                                       int destOffsetY, int destWidth, int destHeight, ProductData destBuffer,
-                                                       ProgressMonitor pm) throws IOException {
+                                          int sourceStepX, int sourceStepY, Band destBand, int destOffsetX,
+                                          int destOffsetY, int destWidth, int destHeight, ProductData destBuffer,
+                                          ProgressMonitor pm) throws IOException {
 
         Guardian.assertTrue("sourceStepX == 1 && sourceStepY == 1", sourceStepX == 1 && sourceStepY == 1);
         Guardian.assertTrue("sourceWidth == destWidth", sourceWidth == destWidth);
@@ -592,9 +591,6 @@ public class IceyeProductReader extends SARReader {
         shape[0] = 1;
         shape[1] = destWidth;
         origin[1] = sourceOffsetX;
-        if (isComplex && destBand.getUnit().equals(Unit.IMAGINARY)) {
-            origin[2] = 1;
-        }
 
         pm.beginTask("Reading util from band " + destBand.getName(), destHeight);
         try {

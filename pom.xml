@@ -11,7 +11,7 @@
 
     <groupId>com.iceye.snap.product.reader.h5</groupId>
     <artifactId>iceye-snap-desktop-basic-product-reader-h5</artifactId>
-    <version>3.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>ICEYE snap Desktop Product reader h5</name>
     <packaging>nbm</packaging>
 

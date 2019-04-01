@@ -20,8 +20,8 @@ public class IceyeXConstants {
     public static final String ABS_ORBIT = "orbit_absolute_number";
     public static final String STATE_VECTOR_TIME = "state_vector_time_utc";
     public static final String INCIDENCE_ANGLES = "local_incidence_angle";
-    public static final int SLICE_NUM = 9999;
-    public static final int DATA_TAKE_ID = 9999;
+    public static final int SLICE_NUM = 99999;
+    public static final int DATA_TAKE_ID = 99999;
     public static final String FIRST_LINE_TIME = "zerodoppler_start_utc";
     public static final String LAST_LINE_TIME = "zerodoppler_end_utc";
     public static final String FIRST_NEAR = "coord_first_near";
@@ -42,8 +42,8 @@ public class IceyeXConstants {
     public static final int SUBSET_OFFSET_X = 0;
     public static final int SUBSET_OFFSET_Y = 0;
     public static final String AVG_SCENE_HEIGHT = "avg_scene_height";
-    public static final double LAT_PIXEL_RES = 9999.0;
-    public static final double LON_PIXEL_RES = 9999.0;
+    public static final double LAT_PIXEL_RES = 99999.0;
+    public static final double LON_PIXEL_RES = 99999.0;
     public static final String FIRST_PIXEL_TIME = "first_pixel_time";
     public static final int ANT_ELEV_CORR_FLAG = 1;
     public static final int RANGE_SPREAD_COMP_FLAG = 1;
@@ -51,10 +51,10 @@ public class IceyeXConstants {
     public static final int ABS_CALIBRATION_FLAG = 0;
     public static final String CALIBRATION_FACTOR = "calibration_factor";
     public static final int INC_ANGLE_COMP_FLAG = 0;
-    public static final double REF_INC_ANGLE = 9999.0;
-    public static final double REF_SLANT_RANGE = 9999.0;
-    public static final double REF_SLANT_RANGE_EXP = 9999.0;
-    public static final double RESCALING_FACTOR = 9999.0;
+    public static final double REF_INC_ANGLE = 99999.0;
+    public static final double REF_SLANT_RANGE = 99999.0;
+    public static final double REF_SLANT_RANGE_EXP = 99999.0;
+    public static final double RESCALING_FACTOR = 99999.0;
     public static final String RANGE_SAMPLING_RATE = "range_sampling_rate";
     public static final String RANGE_BANDWIDTH = "chirp_bandwidth";
     public static final String AZIMUTH_BANDWIDTH = "total_processed_bandwidth_azimuth";
@@ -73,9 +73,11 @@ public class IceyeXConstants {
     public static final String S_I = "s_i";
     public static final String S_Q = "s_q";
     public static final String S_AMPLITUDE = "s_amplitude";
+    public static final String ICEYE_PROCESSOR_NAME = "ICEYE_P_0.99";
     //    IceyeProductReaderPlugIn
     private static final String ICEYE_FORMAT_NAMES = "IceyeProduct";
     private static final String ICEYE_FORMAT_FILE_EXTENSIONS = "h5";
+
     private IceyeXConstants() {
         //not allowed to instantiated
     }

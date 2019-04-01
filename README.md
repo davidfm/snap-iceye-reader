@@ -6,7 +6,7 @@ Main contact: ahmad.hamouda@iceye.fi
 * Introduction
 
 This plugin is used inside snap desktop application to map our image format to snap format.
-This blugin build as per snap development extension module documentation "https://senbox.atlassian.net/wiki/spaces/SNAP/pages/10879037/How+to+develop+an+extension+module".
+This plugin build as per snap development extension module documentation "https://senbox.atlassian.net/wiki/spaces/SNAP/pages/10879037/How+to+develop+an+extension+module".
 
 * Compilation & dependencies
 
@@ -16,6 +16,15 @@ purposes [debug], execute:
     - Change TESTING_IMAGE_PATH variable at e.g.esa.snap.dataio.iceye.TestIceyeReader
     - Set application enviroments as per "https://senbox.atlassian.net/wiki/spaces/SNAP/pages/10879037/How+to+develop+an+extension+module"
     - Run test case in debug mode
+
+In order to attach code for debugger mode:
+
+    - Create Jar configuration with the following parameters: 
+        - Jar path:	<your snap desktop installation directory>/snap/modules/ext/org.esa.snap.snap-rcp/org-esa-snap/snap-main.jar
+        - VM options:	-Dsun.java2d.noddraw=true -Dsun.awt.nopixfmt=true -Dsun.java2d.dpiaware=false -Dorg.netbeans.level=INFO -Xmx8G
+        - Program arguments:	--userdir "<your .snap path usualy at home>/.snap/system"
+        - Working directory:	<your snap desktop installation directory>
+        - JRE:	1.8
 
 * Unit Testing
 
