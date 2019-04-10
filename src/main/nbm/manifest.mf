@@ -1,6 +1,9 @@
 Manifest-Version: 1.0
 AutoUpdate-Show-In-Client: true
-AutoUpdate-Essential-Module: true
-OpenIDE-Module-Layer: e/g/org/esa/snap/dataio/iceye/layer.xml
+AutoUpdate-Essential-Module: false
+OpenIDE-Module-Layer: com/iceye/esa/snap/dataio/layer.xml
 OpenIDE-Module-Java-Dependencies: Java > 1.8
 OpenIDE-Module-Display-Category: SNAP
+OpenIDE-Module-Long-Description: <p>SAR Product readers.</p><p><b>Vendor:</b> ICEYE Oy</p><p>
+ <b>Contact address:</b>Maarintie 6, 02150 Espoo, Finland</p><p><b>Copyright:</b> (C) 2019 by ICEYE Oy</p><p><b>
+ Vendor:</b> ICEYE Oy</p><p><b>License:</b> http://www.gnu.org/licenses/gpl.html</p>

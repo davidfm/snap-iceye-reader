@@ -13,7 +13,7 @@ This plugin build as per snap development extension module documentation "https:
 In order to compile and execute the current code for development
 purposes [debug], execute:
 
-    - Change TESTING_IMAGE_PATH variable at e.g.esa.snap.dataio.iceye.TestIceyeReader
+    - Change TESTING_IMAGE_PATH variable at TestIceyeReader
     - Set application enviroments as per "https://senbox.atlassian.net/wiki/spaces/SNAP/pages/10879037/How+to+develop+an+extension+module"
     - Run test case in debug mode
 
@@ -30,7 +30,7 @@ In order to attach code for debugger mode:
 
 To run unit tests, execute:
 
-    - change TESTING_IMAGE_PATH variable at e.g.esa.snap.dataio.iceye.TestIceyeReader
+    - change TESTING_IMAGE_PATH variable at TestIceyeReader
 
     mvn clean install
 

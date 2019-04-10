@@ -9,10 +9,10 @@
         <version>6.0.6</version>
     </parent>
 
-    <groupId>com.iceye.snap.product.reader.h5</groupId>
-    <artifactId>iceye-snap-desktop-basic-product-reader-h5</artifactId>
+    <groupId>com.iceye.esa.snap</groupId>
+    <artifactId>iceye-slc-reader</artifactId>
     <version>1.0.0</version>
-    <name>ICEYE snap Desktop Product reader h5</name>
+    <name>ICEYE snap Desktop Product slc reader</name>
     <packaging>nbm</packaging>
 
     <dependencies>
@@ -22,31 +22,11 @@
         </dependency>
         <dependency>
             <groupId>org.esa.snap</groupId>
-            <artifactId>ceres-jai</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.esa.snap</groupId>
-            <artifactId>ceres-glayer</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.esa.snap</groupId>
             <artifactId>snap-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.esa.snap</groupId>
-            <artifactId>snap-gpf</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.esa.snap</groupId>
-            <artifactId>snap-geotiff</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.esa.snap</groupId>
             <artifactId>snap-engine-utilities</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.esa.snap</groupId>
-            <artifactId>snap-envi-reader</artifactId>
         </dependency>
         <dependency>
             <groupId>org.esa.snap</groupId>
@@ -59,20 +39,6 @@
         <dependency>
             <groupId>org.esa.s1tbx</groupId>
             <artifactId>s1tbx-io</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>23.0</version>
-        </dependency>
-        <dependency>
-            <groupId>uk.me.jstott</groupId>
-            <artifactId>jcoord</artifactId>
-            <version>1.0</version>
         </dependency>
     </dependencies>
 
