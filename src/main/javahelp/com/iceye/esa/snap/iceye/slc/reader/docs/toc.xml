@@ -11,7 +11,7 @@
         <tocitem text="Import and Export">
             <tocitem text="Import Raster Data">
                 <tocitem text="SAR Sensors">
-                    <tocitem text="ICEYE slc reader" target="importIceyeProduct"/>
+                    <tocitem text="ICEYE" target="importIceyeProduct"/>
                 </tocitem>
             </tocitem>
         </tocitem>
