@@ -1,6 +1,6 @@
 Project name: SNAP ICEYE reader
 Type: Plugin  
-Main contact: ahmad.hamouda@iceye.fi  
+Main contact: ahmad.hamouda (at) iceye.fi  
 
 * Introduction
 
