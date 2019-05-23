@@ -1,6 +1,5 @@
-Project name: SNAP importer plugin  
+Project name: SNAP ICEYE reader
 Type: Plugin  
-Repository: git clone git@bitbucket.org:iceyedev/snap_importer.git  
 Main contact: ahmad.hamouda@iceye.fi  
 
 * Introduction
