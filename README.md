@@ -1,16 +1,16 @@
-Project name: SNAP importer plugin
-Type: Plugin
-Repository: git clone git@bitbucket.org:iceyedev/snap_importer.git
-Main contact: ahmad.hamouda@iceye.fi
+Project name: SNAP importer plugin  
+Type: Plugin  
+Repository: git clone git@bitbucket.org:iceyedev/snap_importer.git  
+Main contact: ahmad.hamouda@iceye.fi  
 
 * Introduction
 
-This plugin is used inside snap desktop application to map our image format to snap format.
+This plugin is used inside snap desktop application to map our image format to snap format.  
 This plugin build as per snap development extension module documentation "https://senbox.atlassian.net/wiki/spaces/SNAP/pages/10879037/How+to+develop+an+extension+module".
 
 * Compilation & dependencies
 
-In order to compile and execute the current code for development
+In order to compile and execute the current code for development  
 purposes [debug], execute:
 
     - Change TESTING_IMAGE_PATH variable at TestIceyeReader
