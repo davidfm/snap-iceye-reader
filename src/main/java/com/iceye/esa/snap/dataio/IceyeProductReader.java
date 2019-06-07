@@ -39,7 +39,6 @@ public class IceyeProductReader extends SARReader {
     private final DateFormat standardDateFormat = ProductData.UTC.createDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     private NetcdfFile netcdfFile = null;
     private Product product = null;
-    private NcVariableMap variableMap = null;
     private boolean yFlipped = false;
     private boolean isComplex = false;
 
@@ -92,8 +91,10 @@ public class IceyeProductReader extends SARReader {
             final double nearRangeAngle = incidenceAngles[0];
             final double farRangeAngle = incidenceAngles[incidenceAngles.length - 1];
 
-            final double firstRangeTime = netcdfFile.getRootGroup().findVariable(IceyeXConstants.FIRST_PIXEL_TIME).readScalarDouble();
-            final double lastRangeTime = netcdfFile.getRootGroup().findVariable(IceyeXConstants.FIRST_PIXEL_TIME).readScalarDouble() + (netcdfFile.getRootGroup().findVariable(IceyeXConstants.NUM_SAMPLES_PER_LINE).readScalarDouble() / netcdfFile.getRootGroup().findVariable(IceyeXConstants.RANGE_SAMPLING_RATE).readScalarDouble());
+            final double firstRangeTime = netcdfFile.getRootGroup().findVariable(IceyeXConstants.FIRST_PIXEL_TIME).readScalarDouble()*Constants.sTOns;
+            final double samplesPerLine = netcdfFile.getRootGroup().findVariable(IceyeXConstants.NUM_SAMPLES_PER_LINE).readScalarDouble();
+            final double rangeSamplingRate = netcdfFile.getRootGroup().findVariable(IceyeXConstants.RANGE_SAMPLING_RATE).readScalarDouble();
+            final double lastRangeTime = firstRangeTime + samplesPerLine / rangeSamplingRate * Constants.sTOns;
 
             final float[] incidenceCorners = new float[]{(float) nearRangeAngle, (float) farRangeAngle, (float) nearRangeAngle, (float) farRangeAngle};
             final float[] slantRange = new float[]{(float) firstRangeTime, (float) lastRangeTime, (float) firstRangeTime, (float) lastRangeTime};
@@ -166,7 +167,6 @@ public class IceyeProductReader extends SARReader {
     private void initReader() {
         product = null;
         netcdfFile = null;
-        variableMap = null;
     }
 
     /**
@@ -235,8 +235,6 @@ public class IceyeProductReader extends SARReader {
     public void close() throws IOException {
         if (product != null) {
             product = null;
-            variableMap.clear();
-            variableMap = null;
             netcdfFile.close();
             netcdfFile = null;
         }
@@ -249,8 +247,8 @@ public class IceyeProductReader extends SARReader {
         NetCDFUtils.addAttributes(origMetadataRoot, NetcdfConstants.GLOBAL_ATTRIBUTES_NAME,
                 netcdfFile.getGlobalAttributes());
 
-        for (final Variable variable : netcdfFile.getVariables()) {
-            NetCDFUtils.addAttributes(origMetadataRoot, variable.getShortName(), variable.getAttributes());
+        for (Variable variable : netcdfFile.getVariables()) {
+            NetCDFUtils.addVariableMetadata(origMetadataRoot, variable, 5000);
         }
 
         addAbstractedMetadataHeader(product.getMetadataRoot());
