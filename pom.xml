@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.esa.s1tbx</groupId>
         <artifactId>s1tbx</artifactId>
-        <version>6.0.6</version>
+        <version>7.0.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.iceye.esa.snap</groupId>
@@ -60,9 +60,6 @@
                 <configuration>
                     <publicPackages>
                         <publicPackage>org.esa.s1tbx.*</publicPackage>
-                        <publicPackage>org.joda.*</publicPackage>
-                        <publicPackage>org.slf4j.*</publicPackage>
-                        <publicPackage>com.google.common.*</publicPackage>
                     </publicPackages>
                 </configuration>
             </plugin>
