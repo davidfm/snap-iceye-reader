@@ -237,7 +237,7 @@ public class IceyeGRDProductReader extends SARReader {
         } catch (Exception e) {
             SystemUtils.LOG.severe(e.getMessage());
         }
-        return null;
+        return product;
     }
 
     private TIFFImageMetadata getTiffMetadata(File inputFile) {
@@ -557,8 +557,6 @@ public class IceyeGRDProductReader extends SARReader {
         final double slantRangeToFirstPixel = Double.parseDouble(tiffFeilds.get(IceyeXConstants.SLANT_RANGE_TO_FIRST_PIXEL.toUpperCase())); // in m
         final double rangeSpacing = Double.parseDouble(tiffFeilds.get(IceyeXConstants.RANGE_SPACING.toUpperCase())); // in m
         final boolean srgrFlag = tiffFeilds.get(IceyeXConstants.SPH_DESCRIPTOR.toUpperCase()).equalsIgnoreCase(IceyeXConstants.GRD);
-        final boolean isDescending = tiffFeilds.get(IceyeXConstants.PASS.toUpperCase()).equalsIgnoreCase(IceyeXConstants.DESCENDING);
-        final boolean isAntennaPointingRight = tiffFeilds.get(IceyeXConstants.ANTENNA_POINTING.toUpperCase()).equalsIgnoreCase(IceyeXConstants.RIGHT);
 
         // get scene center latitude
         String coordCenter = tiffFeilds.get(IceyeXConstants.COORD_CENTER.toUpperCase());
@@ -596,11 +594,6 @@ public class IceyeGRDProductReader extends SARReader {
             final double alpha = FastMath.acos((rtPlusH2 - ri * ri - rt2) / (2.0 * ri * rt));
             if (i % subSamplingX == 0) {
                 int index = k++;
-
-                if ((isDescending && isAntennaPointingRight || (!isDescending && !isAntennaPointingRight))) {// flip
-                    index = gridWidth - 1 - index;
-                }
-
                 incidenceAngles[index] = (float) (alpha * Constants.RTOD);
             }
 
@@ -670,14 +663,8 @@ public class IceyeGRDProductReader extends SARReader {
     }
 
     private void setRangeTime(MetadataElement absRoot, float[] rangeDist, float[] rangeTime) {
-        final boolean isDescending = absRoot.getAttributeString(AbstractMetadata.PASS).equalsIgnoreCase(IceyeXConstants.DESCENDING);
-        final boolean isAntennaPointingRight = absRoot.getAttributeString(AbstractMetadata.antenna_pointing).equals(IceyeXConstants.RIGHT);
-
         for (int i = 0; i < rangeDist.length; i++) {
-            int index = i;
-            if ((isDescending && isAntennaPointingRight || !isDescending && !isAntennaPointingRight)) // flip for descending RS2
-                index = rangeDist.length - 1 - i;
-            rangeTime[index] = (float) (rangeDist[i] / Constants.halfLightSpeed * Constants.oneBillion); // in ns
+            rangeTime[i] = (float) (rangeDist[i] / Constants.halfLightSpeed * Constants.oneBillion); // in ns
         }
     }
 
